@@ -1,0 +1,55 @@
+from machine import Pin, UART
+import utime
+
+uart = UART(0,9600)
+led = Pin(25, Pin.OUT)
+realy1=Pin(14,Pin.OUT)
+realy2=Pin(15,Pin.OUT)
+realy3=Pin(16,Pin.OUT)
+realy4=Pin(17,Pin.OUT)
+
+message = ""
+realy1.value(1)
+realy2.value(1)
+realy3.value(1)
+realy4.value(1)
+while True:
+    print("waiting...")
+    if uart.any():
+        message = uart.readline()
+        print(message)
+        message= message.decode("utf-16")
+        messages= str(message)
+        print(messages)
+        if messages =='*ON1#':
+            realy1.value(0)
+            print("got *ON1#")
+        elif messages == '*OFF1#':
+            realy1.value(1)
+            print("got *OFF1#")
+        elif messages == '*ON2#':
+            realy2.value(0)       
+        elif messages =='*OFF2#':
+            realy2.value(1)   
+        elif messages == '*ON3#':
+            realy3.value(0)   
+        elif messages == '*OFF3#':
+            realy3.value(1)   
+        elif messages == '*ON4#':
+            realy4.value(0)   
+        elif messages == '*OFF4#':
+            realy4.value(1)   
+        elif messages == '*ALLON#':
+            realy1.value(0)
+            realy2.value(0)
+            realy3.value(0)
+            realy4.value(0)   
+        elif messages == '*ALLOFF#':
+            realy1.value(1)
+            realy2.value(1)
+            realy3.value(1)
+            realy4.value(1)    
+    utime.sleep(0.5)
+
+
+
