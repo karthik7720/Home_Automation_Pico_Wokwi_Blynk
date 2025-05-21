@@ -10,8 +10,6 @@ This repository contains the implementation of a comprehensive Home Automation s
 ![IMG-20240310-WA0002](https://github.com/user-attachments/assets/f9e106f5-790c-43bb-8935-c5824cdec2eb)
 
 
-
-
 2. **Simulation in Wokwi:**
    - Components: ESP32, relay modules with LEDs, push buttons, 16x2 LCD display.
    - Control: Blynk IoT platform is used to control relay 0, and push buttons are used to control other relays.
